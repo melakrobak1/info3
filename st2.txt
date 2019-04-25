@@ -1,0 +1,2 @@
+SELECT AVG(Population) FROM Country WHERE Continent='Europe';
+

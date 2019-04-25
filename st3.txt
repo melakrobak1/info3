@@ -1,0 +1,3 @@
+SELECT Country.Name, Count(*) AS 'Number Of Cities' FROM Country INNER JOIN City ON City.CountryCode=Country.Code WHERE (City.Population>500000 AND Country.Name='Poland') GROUP BY Country.Name;
+
+SELECT City.Name FROM Country INNER JOIN City ON City.CountryCode=Country.Code WHERE (City.Population>500000 AND Country.Name='Poland');

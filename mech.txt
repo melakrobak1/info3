@@ -1,0 +1,5 @@
+SELECT Country.Name, City.District FROM Country INNER JOIN City ON Country.Code=City.CountryCode WHERE (Country.SurfaceArea=(SELECT MAX(Country.SurfaceArea) FROM Country)) GROUP BY Country.Name, City.District ORDER BY City.District;
+
+== SELECT DISTINCT Country.Name, City.District FROM Country INNER JOIN City ON Country.Code=City.CountryCode WHERE (Country.SurfaceArea=(SELECT MAX(Country.SurfaceArea) FROM Country)) ORDER BY City.District;
+
+SELECT Country.Name, City.District FROM Country INNER JOIN City ON Country.Code=City.CountryCode WHERE (Country.SurfaceArea=(SELECT MAX(Country.SurfaceArea) FROM Country)) ORDER BY City.District GROUP BY Country.Name, City.District;

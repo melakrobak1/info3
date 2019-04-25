@@ -1,0 +1,66 @@
+SELECT column_name
+FROM table_name
+WHERE condition
+GROUP BY column_name
+HAVING condition
+ORDER BY column_name;
+
+
+20. SELECT Country.Name, CountryLanguage.Language FROM Country
+INNER JOIN CountryLanguage
+ON Country.Code=CountryLanguage.CountryCode
+WHERE Country.Continent='Europe';
+
+21.SELECT City.Name, Country.Name FROM Country INNER JOIN City ON Country.Capital=City.ID;
+
+22.SELECT City.Name, Country.Name FROM Country INNER JOIN City ON Country.Capital=City.ID WHERE Continent='Asia';
+
+23.SELECT City.Name, Country.Name FROM Country INNER JOIN City ON Country.Capital=City.ID WHERE Continent='Africa' ORDER BY Country.Name DESC;
+
+23.1 alias::: SELECT City.Name, Country.Name as conam FROM Country INNER JOIN City ON Country.Capital=City.ID WHERE Continent='Africa' ORDER BY conam DESC;
+
+24.SELECT Country.Name, CountryLanguage.Language FROM Country INNER JOIN CountryLanguage ON Country.Code=CountryLanguage.CountryCode WHERE Continent='Europe' AND CountryLanguage.IsOfficial='T';
+
+25.SELECT Country.Name FROM Country INNER JOIN CountryLanguage ON Country.Code=CountryLanguage.CountryCode WHERE CountryLanguage.Language='Polish';
+
+26.SELECT Country.Name, CountryLanguage.Language FROM Country INNER JOIN CountryLanguage ON Country.Code=CountryLanguage.CountryCode WHERE Country.Name='Spain';
+
+27.SELECT Country.Name FROM Country INNER JOIN CountryLanguage ON Country.Code=CountryLanguage.CountryCode WHERE (CountryLanguage.Language='Spanish' AND CountryLanguage.IsOfficial='T');    <--28
+
+29.SELECT Country.Name FROM Country WHERE (Continent='Europe' AND LifeExpectancy<70);
+
+30.SELECT Count(*) AS 'Number Of Countries' FROM Country WHERE (Continent='Europe' AND LifeExpectancy>70);
+
+31.SELECT AVG(LifeExpectancy) FROM Country;
+
+32.SELECT Country.Name FROM Country WHERE (Continent='Europe' AND LifeExpectancy<(SELECT AVG(LifeExpectancy) FROM Country));
+
+33.SELECT Country.Name FROM Country WHERE (Continent='Europe' AND LifeExpectancy<(SELECT AVG(LifeExpectancy) FROM Country WHERE Continent='Europe'));
+
+34.SELECT Country.Name FROM Country WHERE (LifeExpectancy<(SELECT (0.5*MAX(LifeExpectancy)) FROM Country WHERE Continent='Europe'));
+
+35.SELECT Country.Name FROM Country WHERE (ISNULL(LifeExpectancy));
+
+36.SELECT Continent, Count(*) AS 'Number Of Countries' FROM Country WHERE (Country.Population>50000000) GROUP BY Continent;
+
+37!.SELECT Country.Name, SUM(City.Population) FROM Country INNER JOIN City ON Country.Code=City.CountryCode GROUP BY Country.Name;
+
+39. SELECT Country.Name, SUM(City.Population) AS my_sum FROM Country INNER JOIN City ON Country.Code=City.CountryCode GROUP BY Country.Name HAVING my_sum > 10000000 ORDER BY my_sum DESC;
+
+40.SELECT Country.Name, SUM(City.Population) AS my_sum FROM Country INNER JOIN City ON Country.Code=City.CountryCode GROUP BY Country.Name HAVING ((my_sum > 10000000) AND (NOT(ISNULL(my_sum)))) ORDER BY my_sum DESC;
+
+41.
+
+42.Dla każdego państwa wypisze wszystkie miasta i tak w kółko
+43.Dla Polski wypisze wszystkie istniejące na świecie miasta
+
+48. SELECT City.Name, Count(*) AS 'liczba wystapien' FROM City GROUP BY City.Name;
+
+49. SELECT City.Name, Count(*) AS 'liczba_wystapien' FROM City GROUP BY City.Name HAVING liczba_wystapien>2;
+
+50.
+
+
+
+
+

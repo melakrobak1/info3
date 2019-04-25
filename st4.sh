@@ -1,5 +1,9 @@
 #!/bin/bash
 set -e
+#Napisz skrypt, ktory stowrzy liste zawierajaca pliki i foldery znajdujace
+#sie w folderze podanym jako argument skryptu. Zapis otrzymana liste oraz godz uruchomienia skryptu
+#do pliku
+
 
 a=$(pwd)
 b=$(find -name "$1")
